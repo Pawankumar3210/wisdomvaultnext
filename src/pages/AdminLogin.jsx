@@ -30,38 +30,55 @@ export default function AdminLogin() {
     <div style={{
       minHeight: "100vh",
       display: "flex",
+      flexDirection: "column",    // Stack items vertically
       alignItems: "center",
       justifyContent: "center",
       padding: 20,
       position: "relative",
       zIndex: 1,
     }}>
-       <button 
-  onClick={() => navigate("/")} 
-  style={{
-    position: "absolute",
-    top: "80px",                    // Moved further down
-    left: "50%",
-    transform: "translateX(-50%)",
-    display: "flex", 
-    alignItems: "center", 
-    gap: 8,
-    background: "transparent",
-    border: "none",
-    color: "#ff1a1a",               // Strong vibrant red
-    cursor: "pointer", 
-    fontSize: "16px",
-    fontWeight: "bold",
-    fontFamily: "'Orbitron', sans-serif",
-    letterSpacing: 1.5,
-    padding: 0,
-  }}
->
-  ← BACK TO HOME
-</button>
+      {/* ✅ BACK BUTTON - NOW PERFECTLY CENTERED AT THE TOP */}
+      <button 
+        onClick={() => navigate("/")} 
+        style={{
+          position: "absolute",
+          top: "30px",                    // Sits cleanly at the top
+          left: "50%",
+          transform: "translateX(-50%)",  // Centers horizontally
+          display: "flex", 
+          alignItems: "center", 
+          gap: 8,
+          background: "rgba(0,240,255,0.05)",
+          border: "1px solid rgba(0,240,255,0.2)",
+          borderRadius: "10px",
+          padding: "10px 18px",
+          color: "#00f0ff",
+          cursor: "pointer", 
+          fontSize: "14px",
+          fontWeight: "bold",
+          fontFamily: "'Orbitron', sans-serif",
+          letterSpacing: 1.5,
+          transition: "all 0.3s ease",
+          zIndex: 10,
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = "rgba(0,240,255,0.15)";
+          e.currentTarget.style.border = "1px solid rgba(0,240,255,0.6)";
+          e.currentTarget.style.boxShadow = "0 0 20px rgba(0,240,255,0.2)";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = "rgba(0,240,255,0.05)";
+          e.currentTarget.style.border = "1px solid rgba(0,240,255,0.2)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        ← BACK TO HOME
+      </button>
+
       <div style={{
         width: "100%",
         maxWidth: 400,
+        marginTop: "60px",                // Prevents overlap with the button
         background: "rgba(0,240,255,0.03)",
         border: "1px solid rgba(0,240,255,0.2)",
         borderRadius: 20,
