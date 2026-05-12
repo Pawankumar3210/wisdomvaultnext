@@ -52,7 +52,7 @@ export default function AdminLogin() {
           border: "1px solid rgba(0,240,255,0.2)",
           borderRadius: "10px",
           padding: "10px 18px",
-          color: "#00f0ff",
+          color: "red",
           cursor: "pointer", 
           fontSize: "14px",
           fontWeight: "bold",
