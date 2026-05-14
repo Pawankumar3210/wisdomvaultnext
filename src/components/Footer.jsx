@@ -33,8 +33,8 @@ const TEAM = [
 
 function LinkedInButtonContent({ color }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
         <rect
           x="2"
           y="2"
@@ -56,7 +56,7 @@ function LinkedInButtonContent({ color }) {
       </svg>
       <span
         style={{
-          fontSize: "10px",
+          fontSize: "9px",
           fontWeight: "700",
           fontFamily: "'Orbitron', sans-serif",
           letterSpacing: "0.5px",
@@ -88,14 +88,14 @@ export default function Footer() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: 20,
+            padding: 12,
             animation: "modalFadeIn 0.3s ease",
           }}
         >
           <div
             style={{
               width: "100%",
-              maxWidth: 520,
+              maxWidth: 400, // REDUCED from 520px
               background: "linear-gradient(135deg, rgba(8,8,30,0.98), rgba(4,4,20,0.98))",
               border: "1px solid rgba(0,240,255,0.25)",
               borderRadius: 20,
@@ -123,7 +123,7 @@ export default function Footer() {
             {/* HEADER */}
             <div
               style={{
-                padding: "28px 28px 20px",
+                padding: "20px 20px 16px", // REDUCED padding
                 borderBottom: "1px solid rgba(0,240,255,0.08)",
                 position: "relative",
                 display: "flex",
@@ -136,16 +136,16 @@ export default function Footer() {
                 onClick={() => setShowTeam(false)}
                 style={{
                   position: "absolute",
-                  top: 20,
-                  right: 20,
-                  width: 32,
-                  height: 32,
+                  top: 14,
+                  right: 14,
+                  width: 28,
+                  height: 28,
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid red",
                   borderRadius: 8,
                   color: "red",
                   cursor: "pointer",
-                  fontSize: 14,
+                  fontSize: 12,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -156,11 +156,11 @@ export default function Footer() {
 
               <div
                 style={{
-                  width: 96,
-                  height: 96,
+                  width: 72, // REDUCED from 96px
+                  height: 72,
                   borderRadius: 24,
                   overflow: "hidden",
-                  marginBottom: 18,
+                  marginBottom: 12,
                   border: "1px solid rgba(255,255,255,0.08)",
                   boxShadow: "0 0 22px rgba(0,240,255,0.22), 0 0 45px rgba(168,85,247,0.16), 0 0 70px rgba(245,158,11,0.12)",
                   background: "rgba(255,255,255,0.03)",
@@ -179,7 +179,7 @@ export default function Footer() {
               <div
                 style={{
                   fontFamily: "'Orbitron', sans-serif",
-                  fontSize: 18,
+                  fontSize: 16, // REDUCED from 18px
                   fontWeight: 700,
                   color: "#00f0ff",
                   letterSpacing: 3,
@@ -192,7 +192,7 @@ export default function Footer() {
 
               <div
                 style={{
-                  fontSize: 11,
+                  fontSize: 10, // REDUCED from 11px
                   color: "rgba(168,85,247,0.75)",
                   textShadow: "0 0 10px rgba(168,85,247,0.35)",
                   letterSpacing: 2,
@@ -204,7 +204,7 @@ export default function Footer() {
             </div>
 
             {/* TEAM MEMBERS */}
-            <div style={{ padding: "16px 20px 24px" }}>
+            <div style={{ padding: "12px 16px 18px" }}> {/* REDUCED padding */}
               {TEAM.map((member, i) => (
                 <div
                   key={i}
@@ -213,10 +213,10 @@ export default function Footer() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 14,
-                    padding: "14px 16px",
+                    gap: 10, // REDUCED gap
+                    padding: "10px 12px", // REDUCED padding
                     borderRadius: 12,
-                    marginBottom: 8,
+                    marginBottom: 6, // REDUCED margin
                     background: `${member.color}08`,
                     border: `1px solid ${member.color}30`,
                     transition: "all 0.25s ease",
@@ -224,15 +224,15 @@ export default function Footer() {
                 >
                   <div
                     style={{
-                      width: 42,
-                      height: 42,
+                      width: 32, // REDUCED from 42px
+                      height: 32,
                       borderRadius: 12,
                       background: `${member.color}15`,
                       border: `1px solid ${member.color}30`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 20,
+                      fontSize: 16, // REDUCED from 20px
                       flexShrink: 0,
                       boxShadow: `0 0 15px ${member.color}30`,
                     }}
@@ -243,10 +243,10 @@ export default function Footer() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div
                       style={{
-                        fontSize: 14,
+                        fontSize: 12, // REDUCED from 14px
                         fontWeight: 600,
                         color: member.color,
-                        marginBottom: 3,
+                        marginBottom: 2,
                         textShadow: `0 0 12px ${member.color}60`,
                       }}
                     >
@@ -254,7 +254,7 @@ export default function Footer() {
                     </div>
                     <div
                       style={{
-                        fontSize: 10,
+                        fontSize: 9, // REDUCED from 10px
                         color: "rgba(255,255,255,0.35)",
                         fontFamily: "'Orbitron', sans-serif",
                         letterSpacing: 1.5,
@@ -271,8 +271,8 @@ export default function Footer() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      padding: "0 12px",
-                      height: 36,
+                      padding: "0 8px",
+                      height: 28, // REDUCED from 36px
                       borderRadius: 9,
                       background: `${member.color}18`,
                       border: `1px solid ${member.color}55`,
@@ -299,10 +299,10 @@ export default function Footer() {
             <div
               style={{
                 textAlign: "center",
-                padding: "12px 20px 20px",
+                padding: "10px 16px 16px", // REDUCED padding
                 borderTop: "1px solid rgba(0,240,255,0.06)",
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: 14,
+                fontSize: 12, // REDUCED from 14px
                 color: "#00f0ff",
                 letterSpacing: 3,
               }}
