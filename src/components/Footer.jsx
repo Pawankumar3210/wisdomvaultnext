@@ -376,10 +376,10 @@ export default function Footer() {
               position: "relative",
             }}
           >
-            {/* HEADER */}
+            {/* HEADER - EXTENDED TOP PADDING TO FIX OVERLAP */}
             <div
               style={{
-                padding: "16px 16px 12px",
+                padding: "28px 16px 12px", // Increased from 16px to 28px
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
@@ -387,7 +387,7 @@ export default function Footer() {
                 textAlign: "center",
               }}
             >
-              {/* X BUTTON - MOVED ABOVE TITLE */}
+              {/* X BUTTON - NOW SAFELY ABOVE TITLE */}
               <button
                 onClick={() => setShowContributors(false)}
                 style={{
@@ -428,8 +428,8 @@ export default function Footer() {
               <div
                 style={{
                   fontSize: 10,
-                  color: "#00f0ff", // CYAN
-                  textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)", // GLOW
+                  color: "#00f0ff",
+                  textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)",
                   fontFamily: "'Orbitron', sans-serif",
                   letterSpacing: 1,
                 }}
@@ -507,8 +507,8 @@ export default function Footer() {
                 padding: "0 16px 16px",
                 fontFamily: "'Orbitron', sans-serif",
                 fontSize: 10,
-                color: "#00f0ff", // CYAN
-                textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)", // GLOW
+                color: "#00f0ff",
+                textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)",
                 letterSpacing: 2,
               }}
             >
