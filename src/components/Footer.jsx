@@ -301,7 +301,7 @@ export default function Footer() {
                 onClick={() => setShowContributors(true)}
                 style={{
                   cursor: "pointer",
-                  color: "#fbbf24", // Gold glow
+                  color: "#fbbf24",
                   textDecoration: "underline",
                   textUnderlineOffset: 3,
                   fontSize: 13,
@@ -366,9 +366,9 @@ export default function Footer() {
           <div
             style={{
               width: "100%",
-              maxWidth: 320, // Smaller than main card for 75% overlap
+              maxWidth: 320,
               background: "linear-gradient(135deg, rgba(8,8,30,0.98), rgba(4,4,20,0.98))",
-              border: "1px solid rgba(251, 191, 36, 0.3)", // Gold border
+              border: "1px solid rgba(251, 191, 36, 0.3)",
               borderRadius: 20,
               overflow: "hidden",
               boxShadow: "0 0 60px rgba(251, 191, 36, 0.15), 0 0 120px rgba(251, 191, 36, 0.05)",
@@ -387,6 +387,7 @@ export default function Footer() {
                 textAlign: "center",
               }}
             >
+              {/* X BUTTON - MOVED ABOVE TITLE */}
               <button
                 onClick={() => setShowContributors(false)}
                 style={{
@@ -417,7 +418,8 @@ export default function Footer() {
                   color: "#fbbf24",
                   letterSpacing: 2,
                   textShadow: "0 0 20px rgba(251, 191, 36, 0.5)",
-                  marginBottom: 4,
+                  marginBottom: 8,
+                  marginTop: 4,
                 }}
               >
                 🌟 CONTENT CONTRIBUTORS
@@ -426,12 +428,13 @@ export default function Footer() {
               <div
                 style={{
                   fontSize: 10,
-                  color: "rgba(255,255,255,0.5)",
+                  color: "#00f0ff", // CYAN
+                  textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)", // GLOW
                   fontFamily: "'Orbitron', sans-serif",
                   letterSpacing: 1,
                 }}
               >
-                Thank you for helping us to expand to all departments!
+                Thank you for helping us to expand to all CSE departments!
               </div>
             </div>
 
@@ -504,7 +507,8 @@ export default function Footer() {
                 padding: "0 16px 16px",
                 fontFamily: "'Orbitron', sans-serif",
                 fontSize: 10,
-                color: "rgba(255,255,255,0.3)",
+                color: "#00f0ff", // CYAN
+                textShadow: "0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2)", // GLOW
                 letterSpacing: 2,
               }}
             >
