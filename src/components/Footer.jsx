@@ -31,38 +31,39 @@ const TEAM = [
   },
 ];
 
+const CONTRIBUTORS = [
+  {
+    name: "Aaditya Chaurasiya",
+    linkedin: "https://www.linkedin.com/in/aaditya-chaurasiya-bb85b3315?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    color: "#60a5fa",
+  },
+  {
+    name: "Shreya V",
+    linkedin: "https://www.linkedin.com/in/shreya-v-4344403b7/",
+    color: "#f472b6",
+  },
+  {
+    name: "Ullas N",
+    linkedin: "https://www.linkedin.com/in/ullas-n-3b655040a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    color: "#34d399",
+  },
+  {
+    name: "Vijay Bhadra",
+    linkedin: "https://www.linkedin.com/in/vijay-bhadra-m-b19b71292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    color: "#fb923c",
+  },
+];
+
 function LinkedInButtonContent({ color }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="2"
-          y="2"
-          width="20"
-          height="20"
-          rx="3"
-          fill={`${color}20`}
-          stroke={color}
-          strokeWidth="2"
-        />
+        <rect x="2" y="2" width="20" height="20" rx="3" fill={`${color}20`} stroke={color} strokeWidth="2" />
         <path d="M7 10v7" stroke={color} strokeWidth="2" strokeLinecap="round" />
         <circle cx="7" cy="7" r="1" fill={color} />
-        <path
-          d="M11 17v-3.5c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5V17"
-          stroke={color}
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
+        <path d="M11 17v-3.5c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5V17" stroke={color} strokeWidth="2" strokeLinecap="round" />
       </svg>
-      <span
-        style={{
-          fontSize: "9px",
-          fontWeight: "700",
-          fontFamily: "'Orbitron', sans-serif",
-          letterSpacing: "0.5px",
-          color: color,
-        }}
-      >
+      <span style={{ fontSize: "9px", fontWeight: "700", fontFamily: "'Orbitron', sans-serif", letterSpacing: "0.5px", color: color }}>
         LinkedIn
       </span>
     </div>
@@ -71,7 +72,7 @@ function LinkedInButtonContent({ color }) {
 
 export default function Footer() {
   const [showTeam, setShowTeam] = useState(false);
-  const [hoveredMember, setHoveredMember] = useState(null);
+  const [showContributors, setShowContributors] = useState(false);
 
   return (
     <>
@@ -95,7 +96,7 @@ export default function Footer() {
           <div
             style={{
               width: "100%",
-              maxWidth: 400, // REDUCED from 520px
+              maxWidth: 400,
               background: "linear-gradient(135deg, rgba(8,8,30,0.98), rgba(4,4,20,0.98))",
               border: "1px solid rgba(0,240,255,0.25)",
               borderRadius: 20,
@@ -123,7 +124,7 @@ export default function Footer() {
             {/* HEADER */}
             <div
               style={{
-                padding: "20px 20px 16px", // REDUCED padding
+                padding: "20px 20px 16px",
                 borderBottom: "1px solid rgba(0,240,255,0.08)",
                 position: "relative",
                 display: "flex",
@@ -156,7 +157,7 @@ export default function Footer() {
 
               <div
                 style={{
-                  width: 72, // REDUCED from 96px
+                  width: 72,
                   height: 72,
                   borderRadius: 24,
                   overflow: "hidden",
@@ -179,7 +180,7 @@ export default function Footer() {
               <div
                 style={{
                   fontFamily: "'Orbitron', sans-serif",
-                  fontSize: 16, // REDUCED from 18px
+                  fontSize: 16,
                   fontWeight: 700,
                   color: "#00f0ff",
                   letterSpacing: 3,
@@ -192,7 +193,7 @@ export default function Footer() {
 
               <div
                 style={{
-                  fontSize: 10, // REDUCED from 11px
+                  fontSize: 10,
                   color: "rgba(168,85,247,0.75)",
                   textShadow: "0 0 10px rgba(168,85,247,0.35)",
                   letterSpacing: 2,
@@ -204,19 +205,17 @@ export default function Footer() {
             </div>
 
             {/* TEAM MEMBERS */}
-            <div style={{ padding: "12px 16px 18px" }}> {/* REDUCED padding */}
+            <div style={{ padding: "12px 16px 18px" }}>
               {TEAM.map((member, i) => (
                 <div
                   key={i}
-                  onMouseEnter={() => setHoveredMember(i)}
-                  onMouseLeave={() => setHoveredMember(null)}
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 10, // REDUCED gap
-                    padding: "10px 12px", // REDUCED padding
+                    gap: 10,
+                    padding: "10px 12px",
                     borderRadius: 12,
-                    marginBottom: 6, // REDUCED margin
+                    marginBottom: 6,
                     background: `${member.color}08`,
                     border: `1px solid ${member.color}30`,
                     transition: "all 0.25s ease",
@@ -224,7 +223,7 @@ export default function Footer() {
                 >
                   <div
                     style={{
-                      width: 32, // REDUCED from 42px
+                      width: 32,
                       height: 32,
                       borderRadius: 12,
                       background: `${member.color}15`,
@@ -232,7 +231,7 @@ export default function Footer() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 16, // REDUCED from 20px
+                      fontSize: 16,
                       flexShrink: 0,
                       boxShadow: `0 0 15px ${member.color}30`,
                     }}
@@ -243,7 +242,7 @@ export default function Footer() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div
                       style={{
-                        fontSize: 12, // REDUCED from 14px
+                        fontSize: 12,
                         fontWeight: 600,
                         color: member.color,
                         marginBottom: 2,
@@ -254,7 +253,7 @@ export default function Footer() {
                     </div>
                     <div
                       style={{
-                        fontSize: 9, // REDUCED from 10px
+                        fontSize: 9,
                         color: "rgba(255,255,255,0.35)",
                         fontFamily: "'Orbitron', sans-serif",
                         letterSpacing: 1.5,
@@ -272,7 +271,7 @@ export default function Footer() {
                       display: "flex",
                       alignItems: "center",
                       padding: "0 8px",
-                      height: 28, // REDUCED from 36px
+                      height: 28,
                       borderRadius: 9,
                       background: `${member.color}18`,
                       border: `1px solid ${member.color}55`,
@@ -296,18 +295,220 @@ export default function Footer() {
               ))}
             </div>
 
+            {/* CONTENT CONTRIBUTORS LINK - ABOVE SEPARATOR */}
+            <div style={{ padding: "0 16px 10px", textAlign: "center" }}>
+              <span
+                onClick={() => setShowContributors(true)}
+                style={{
+                  cursor: "pointer",
+                  color: "#fbbf24", // Gold glow
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  fontSize: 13,
+                  fontFamily: "'Orbitron', sans-serif",
+                  letterSpacing: 1,
+                  textShadow: "0 0 10px rgba(251, 191, 36, 0.6), 0 0 20px rgba(251, 191, 36, 0.3)",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.textShadow = "0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.5)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.textShadow = "0 0 10px rgba(251, 191, 36, 0.6), 0 0 20px rgba(251, 191, 36, 0.3)";
+                }}
+              >
+                ✨ Content Contributors
+              </span>
+            </div>
+
+            {/* SEPARATOR LINE */}
+            <div
+              style={{
+                margin: "0 16px 12px",
+                borderTop: "1px solid rgba(0,240,255,0.06)",
+              }}
+            />
+
+            {/* FOOTER TEXT */}
             <div
               style={{
                 textAlign: "center",
-                padding: "10px 16px 16px", // REDUCED padding
-                borderTop: "1px solid rgba(0,240,255,0.06)",
+                padding: "0 16px 16px",
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: 12, // REDUCED from 14px
+                fontSize: 12,
                 color: "#00f0ff",
                 letterSpacing: 3,
               }}
             >
               Per Aspera Ad Astra ✨
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONTENT CONTRIBUTORS OVERLAY (75% Overlap) */}
+      {showContributors && (
+        <div
+          onClick={(e) => e.target === e.currentTarget && setShowContributors(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 1001,
+            background: "rgba(0,0,10,0.5)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 12,
+            animation: "modalFadeIn 0.3s ease",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              maxWidth: 320, // Smaller than main card for 75% overlap
+              background: "linear-gradient(135deg, rgba(8,8,30,0.98), rgba(4,4,20,0.98))",
+              border: "1px solid rgba(251, 191, 36, 0.3)", // Gold border
+              borderRadius: 20,
+              overflow: "hidden",
+              boxShadow: "0 0 60px rgba(251, 191, 36, 0.15), 0 0 120px rgba(251, 191, 36, 0.05)",
+              animation: "modalSlideUp 0.35s ease",
+              position: "relative",
+            }}
+          >
+            {/* HEADER */}
+            <div
+              style={{
+                padding: "16px 16px 12px",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
+            >
+              <button
+                onClick={() => setShowContributors(false)}
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 10,
+                  width: 28,
+                  height: 28,
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid red",
+                  borderRadius: 8,
+                  color: "red",
+                  cursor: "pointer",
+                  fontSize: 12,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                ✕
+              </button>
+
+              <div
+                style={{
+                  fontFamily: "'Orbitron', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: "#fbbf24",
+                  letterSpacing: 2,
+                  textShadow: "0 0 20px rgba(251, 191, 36, 0.5)",
+                  marginBottom: 4,
+                }}
+              >
+                🌟 CONTENT CONTRIBUTORS
+              </div>
+
+              <div
+                style={{
+                  fontSize: 10,
+                  color: "rgba(255,255,255,0.5)",
+                  fontFamily: "'Orbitron', sans-serif",
+                  letterSpacing: 1,
+                }}
+              >
+                Thank you for helping us to expand to all departments!
+              </div>
+            </div>
+
+            {/* CONTRIBUTORS LIST */}
+            <div style={{ padding: "8px 12px 16px" }}>
+              {CONTRIBUTORS.map((contributor, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "8px 10px",
+                    borderRadius: 10,
+                    marginBottom: 4,
+                    background: `${contributor.color}08`,
+                    border: `1px solid ${contributor.color}30`,
+                    transition: "all 0.25s ease",
+                  }}
+                >
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: contributor.color,
+                        textShadow: `0 0 12px ${contributor.color}60`,
+                      }}
+                    >
+                      {contributor.name}
+                    </div>
+                  </div>
+
+                  <a
+                    href={contributor.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "0 8px",
+                      height: 26,
+                      borderRadius: 9,
+                      background: `${contributor.color}18`,
+                      border: `1px solid ${contributor.color}55`,
+                      transition: "all 0.25s",
+                      flexShrink: 0,
+                      textDecoration: "none",
+                      boxShadow: `0 0 10px ${contributor.color}40`,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.05)";
+                      e.currentTarget.style.background = `${contributor.color}25`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.background = `${contributor.color}18`;
+                    }}
+                  >
+                    <LinkedInButtonContent color={contributor.color} />
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* FOOTER */}
+            <div
+              style={{
+                textAlign: "center",
+                padding: "0 16px 16px",
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: 10,
+                color: "rgba(255,255,255,0.3)",
+                letterSpacing: 2,
+              }}
+            >
+              Your contribution matters ✨
             </div>
           </div>
         </div>
