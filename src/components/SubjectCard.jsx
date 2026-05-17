@@ -99,15 +99,15 @@ export default function SubjectCard({ subject, contents }) {
         </div>
       </div>
 
-      {/* Stats */}
-      <div style={{ display: "flex", gap: 8, marginBottom: expanded ? 24 : 16 }}>
+      {/* ✅ STATS SECTION - REDUCED SIZE */}
+      <div style={{ display: "flex", gap: 6, marginBottom: expanded ? 20 : 14 }}>
         {stats.map((s, i) => (
           <div key={i} style={{
-            flex: 1, textAlign: "center", padding: "11px 8px",
-            background: `${s.color}10`, border: `1px solid ${s.color}30`, borderRadius: 10,
+            flex: 1, textAlign: "center", padding: "8px 6px",
+            background: `${s.color}10`, border: `1px solid ${s.color}25`, borderRadius: 8,
           }}>
-            <div style={{ fontSize: 21, fontWeight: 700, color: s.color }}>{s.count}</div>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>
+            <div style={{ fontSize: 16, fontWeight: 700, color: s.color }}>{s.count}</div>
+            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", marginTop: 2 }}>
               {s.label}
             </div>
           </div>
