@@ -94,14 +94,13 @@ export default function Home() {
           <SearchBar />
         </div>
 
-        {/* STATS BAR - FIXED GRID LAYOUT (NO MORE VERTICAL GAPS) */}
+        {/* STATS BAR - FLEX LAYOUT RESTORED (NO MORE GRID) */}
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-          gap: 6,
-          maxWidth: 480,
-          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          gap: 6, // Reduced from 12px
           padding: "0 20px 32px",
+          flexWrap: "wrap",
         }}>
           <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
             <AnimatedCounter target={contents.filter(c => c.type === "note").length} color="#00f0ff" label="Notes" />
