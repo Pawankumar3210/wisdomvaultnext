@@ -44,8 +44,8 @@ export default function Home() {
       minHeight: "100vh",
       position: "relative",
       zIndex: 1,
-      display: "flex",        // ADDED FOR FOOTER POSITIONING
-      flexDirection: "column" // ADDED FOR FOOTER POSITIONING
+      display: "flex",
+      flexDirection: "column"
     }}>
       <TopLoadingBar loading={loading} />
 
@@ -94,13 +94,14 @@ export default function Home() {
           <SearchBar />
         </div>
 
-        {/* STATS BAR - REDUCED SIZE BY 20% */}
+        {/* STATS BAR - FIXED GRID LAYOUT (NO MORE VERTICAL GAPS) */}
         <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 6, // Reduced from 12px
-          padding: "0 20px 32px", // Reduced from 40px
-          flexWrap: "wrap",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+          gap: 6,
+          maxWidth: 480,
+          margin: "0 auto",
+          padding: "0 20px 32px",
         }}>
           <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
             <AnimatedCounter target={contents.filter(c => c.type === "note").length} color="#00f0ff" label="Notes" />
@@ -109,7 +110,7 @@ export default function Home() {
             <AnimatedCounter target={contents.filter(c => c.type === "qb").length} color="#a855f7" label="Question Banks" />
           </div>
           <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
-            <AnimatedCounter target={contents.filter(c => c.type === "paper").length} color="#f59e0b" label="Previous Year Papers" />
+            <AnimatedCounter target={contents.filter(c => c.type === "paper").length} color="#f59e0b" label="Question Papers" />
           </div>
           <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
             <AnimatedCounter target={subjects.length} color="#10b981" label="Subjects" />
