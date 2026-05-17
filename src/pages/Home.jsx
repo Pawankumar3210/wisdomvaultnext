@@ -44,8 +44,8 @@ export default function Home() {
       minHeight: "100vh",
       position: "relative",
       zIndex: 1,
-      display: "flex",
-      flexDirection: "column"
+      display: "flex",        // ADDED FOR FOOTER POSITIONING
+      flexDirection: "column" // ADDED FOR FOOTER POSITIONING
     }}>
       <TopLoadingBar loading={loading} />
 
@@ -94,26 +94,18 @@ export default function Home() {
           <SearchBar />
         </div>
 
-        {/* STATS BAR - FLEX LAYOUT RESTORED (NO MORE GRID) */}
+        {/* STATS BAR */}
         <div style={{
           display: "flex",
           justifyContent: "center",
-          gap: 6, // Reduced from 12px
-          padding: "0 20px 32px",
+          gap: 12,
+          padding: "0 20px 40px",
           flexWrap: "wrap",
         }}>
-          <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
-            <AnimatedCounter target={contents.filter(c => c.type === "note").length} color="#00f0ff" label="Notes" />
-          </div>
-          <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
-            <AnimatedCounter target={contents.filter(c => c.type === "qb").length} color="#a855f7" label="Question Banks" />
-          </div>
-          <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
-            <AnimatedCounter target={contents.filter(c => c.type === "paper").length} color="#f59e0b" label="Question Papers" />
-          </div>
-          <div style={{ transform: "scale(0.8)", transformOrigin: "center" }}>
-            <AnimatedCounter target={subjects.length} color="#10b981" label="Subjects" />
-          </div>
+          <AnimatedCounter target={contents.filter(c => c.type === "note").length} color="#00f0ff" label="Notes" />
+          <AnimatedCounter target={contents.filter(c => c.type === "qb").length} color="#a855f7" label="Question Banks" />
+          <AnimatedCounter target={contents.filter(c => c.type === "paper").length} color="#f59e0b" label="Question Papers" />
+          <AnimatedCounter target={subjects.length} color="#10b981" label="Subjects" />
         </div>
 
         {/* SUBJECTS SECTION */}
