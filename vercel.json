@@ -1,5 +1,10 @@
 {
   "buildCommand": "CI=false react-scripts build",
   "outputDirectory": "build",
-  "framework": null
+  "framework": null,
+  "env": {
+    "SKIP_PREFLIGHT_CHECK": "true",
+    "CI": "false",
+    "NODE_OPTIONS": "--openssl-legacy-provider"
+  }
 }
