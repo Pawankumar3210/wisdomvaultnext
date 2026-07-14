@@ -1,9 +1,5 @@
 {
   "buildCommand": "CI=false react-scripts build",
   "outputDirectory": "build",
-  "framework": null,
-  "env": {
-    "SKIP_PREFLIGHT_CHECK": "true",
-    "CI": "false"
-  }
+  "framework": null
 }
