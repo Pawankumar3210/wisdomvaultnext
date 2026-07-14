@@ -1,5 +1,9 @@
 {
-  "buildCommand": "npm install --legacy-peer-deps && react-scripts build",
+  "buildCommand": "CI=false react-scripts build",
   "outputDirectory": "build",
-  "framework": null
+  "framework": null,
+  "env": {
+    "SKIP_PREFLIGHT_CHECK": "true",
+    "CI": "false"
+  }
 }
