@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
-const ADMIN_USER = "wisdomadminman01";
-const ADMIN_PASS = "per$everance@001";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -11,20 +10,24 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setTimeout(() => {
-      if (username === ADMIN_USER && password === ADMIN_PASS) {
-        localStorage.setItem("wv_admin", "true");
-        navigate("/admin");
-      } else {
-        setError("Invalid credentials. Access denied.");
-      }
-      setLoading(false);
-    }, 800);
-  };
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+
+  const { data, error: rpcError } = await supabase.rpc("verify_admin", {
+    input_user: username,
+    input_pass: password,
+  });
+
+  if (rpcError || !data) {
+    setError("Invalid credentials. Access denied.");
+  } else {
+    localStorage.setItem("wv_admin", "true");
+    navigate("/admin");
+  }
+  setLoading(false);
+};
 
   return (
     <div style={{
