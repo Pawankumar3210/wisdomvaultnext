@@ -70,7 +70,7 @@ export default function Home() {
             letterSpacing: 2,
             marginBottom: 20,
           }}>
-            CSE 4TH SEMESTER
+            CSE 5TH SEMESTER
           </div>
 
           <TypewriterText
