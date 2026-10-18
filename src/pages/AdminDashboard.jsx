@@ -7,7 +7,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [subjects, setSubjects] = useState([]);
   const [contents, setContents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(null);
 
@@ -39,7 +39,7 @@ export default function AdminDashboard() {
     }, 4500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ←←← NEW: Update form type when tab changes
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
         type: getContentType()
       }));
     }
-  }, [activeTab]);
+  }, [activeTab]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchAll = async () => {
     setLoading(true);
@@ -96,7 +96,7 @@ export default function AdminDashboard() {
 
     if (pdfFile) {
       const fileName = `${Date.now()}_${pdfFile.name.replace(/\s/g, "_")}`;
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("pdfs")
         .upload(fileName, pdfFile, { cacheControl: "3600", upsert: false });
 

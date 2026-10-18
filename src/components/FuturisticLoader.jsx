@@ -1,14 +1,23 @@
+import { useTheme } from "../context/ThemeContext";
+
 export default function FuturisticLoader({ text = "LOADING" }) {
+  const { isLight } = useTheme();
+
+  const cyanColor = isLight ? "#0284c7" : "#00f0ff";
+  const ringBorder = isLight ? "rgba(2, 132, 199, 0.3)" : "rgba(0, 240, 255, 0.3)";
+
   return (
     <div style={{
       position: "fixed",
       inset: 0,
-      background: "#0a0a1f",
+      background: isLight ? "rgba(253, 251, 247, 0.97)" : "#0a0a1f",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       zIndex: 100000,
+      backdropFilter: "blur(10px)",
+      transition: "background 0.3s ease",
     }}>
 
       <div style={{ position: "relative", width: 180, height: 180, marginBottom: 50 }}>
@@ -17,7 +26,7 @@ export default function FuturisticLoader({ text = "LOADING" }) {
         <div style={{
           position: "absolute",
           inset: -25,
-          border: "2px solid rgba(0, 240, 255, 0.2)",
+          border: `2px solid ${isLight ? "rgba(2, 132, 199, 0.2)" : "rgba(0, 240, 255, 0.2)"}`,
           borderRadius: "50%",
           animation: "rotateSlow 20s linear infinite",
         }} />
@@ -26,7 +35,7 @@ export default function FuturisticLoader({ text = "LOADING" }) {
         <div style={{
           position: "absolute",
           inset: 20,
-          border: "3px solid rgba(0, 240, 255, 0.3)",
+          border: `3px solid ${ringBorder}`,
           borderRadius: "50%",
           animation: "wavePulse 3.5s ease-in-out infinite",
         }} />
@@ -34,7 +43,7 @@ export default function FuturisticLoader({ text = "LOADING" }) {
         <div style={{
           position: "absolute",
           inset: 45,
-          border: "3px solid rgba(0, 240, 255, 0.4)",
+          border: `3px solid ${isLight ? "rgba(2, 132, 199, 0.4)" : "rgba(0, 240, 255, 0.4)"}`,
           borderRadius: "50%",
           animation: "wavePulse 3.5s ease-in-out infinite 0.6s",
         }} />
@@ -47,9 +56,13 @@ export default function FuturisticLoader({ text = "LOADING" }) {
           transform: "translate(-50%, -50%)",
           width: 110,
           height: 110,
-          background: "radial-gradient(circle at 40% 40%, #ffffff, #00e0ff, #0088cc)",
+          background: isLight
+            ? "radial-gradient(circle at 40% 40%, #ffffff, #38bdf8, #0284c7)"
+            : "radial-gradient(circle at 40% 40%, #ffffff, #00e0ff, #0088cc)",
           borderRadius: "50%",
-          boxShadow: "0 0 80px #00f0ff, 0 0 150px rgba(0, 240, 255, 0.7)",
+          boxShadow: isLight
+            ? "0 0 60px #38bdf8, 0 0 100px rgba(2, 132, 199, 0.4)"
+            : "0 0 80px #00f0ff, 0 0 150px rgba(0, 240, 255, 0.7)",
           animation: "coreBreath 2.8s ease-in-out infinite",
         }} />
 
@@ -63,7 +76,9 @@ export default function FuturisticLoader({ text = "LOADING" }) {
           height: 28,
           background: "#ffffff",
           borderRadius: "50%",
-          boxShadow: "0 0 30px #ffffff, 0 0 50px #00f0ff",
+          boxShadow: isLight
+            ? "0 0 25px #ffffff, 0 0 40px #0284c7"
+            : "0 0 30px #ffffff, 0 0 50px #00f0ff",
           animation: "centerPulse 2s ease-in-out infinite",
         }} />
       </div>
@@ -74,8 +89,10 @@ export default function FuturisticLoader({ text = "LOADING" }) {
         fontSize: "24px",
         fontWeight: "600",
         letterSpacing: "7px",
-        color: "#00f0ff",
-        textShadow: "0 0 30px #00f0ff, 0 0 60px rgba(0,240,255,0.6)",
+        color: cyanColor,
+        textShadow: isLight
+          ? "0 0 20px rgba(2, 132, 199, 0.5), 0 0 40px rgba(2, 132, 199, 0.3)"
+          : "0 0 30px #00f0ff, 0 0 60px rgba(0,240,255,0.6)",
         animation: "textGlow 2s ease-in-out infinite alternate",
       }}>
         {text}
@@ -103,8 +120,8 @@ export default function FuturisticLoader({ text = "LOADING" }) {
         }
 
         @keyframes textGlow {
-          from { text-shadow: 0 0 20px #00f0ff; }
-          to { text-shadow: 0 0 40px #00f0ff, 0 0 70px #00f0ff; }
+          from { text-shadow: 0 0 20px ${cyanColor}; }
+          to { text-shadow: 0 0 40px ${cyanColor}, 0 0 70px ${cyanColor}; }
         }
       `}</style>
     </div>

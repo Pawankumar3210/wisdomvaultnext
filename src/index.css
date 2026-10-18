@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-main: #080818;
+  --bg-card: rgba(0, 240, 255, 0.03);
+  --border-card: rgba(0, 240, 255, 0.15);
+  --text-main: #e0f0ff;
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --accent-cyan: #00f0ff;
+  --header-bg: rgba(8, 8, 24, 0.85);
+  --header-border: rgba(0, 240, 255, 0.15);
+}
+
+[data-theme="light"], body.light-mode {
+  --bg-main: #FDFBF7;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --border-card: rgba(2, 132, 199, 0.22);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --accent-cyan: #0284c7;
+  --header-bg: rgba(253, 251, 247, 0.94);
+  --header-border: rgba(2, 132, 199, 0.2);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -8,15 +34,90 @@ body {
   color: #e0f0ff;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background: #FDFBF7;
+  color: #1e293b;
 }
 
 input, select, textarea, button {
   font-family: 'Inter', sans-serif;
 }
 
-::-webkit-scrollbar { width: 4px; }
+/* Custom Scrollbars */
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: #080818; }
-::-webkit-scrollbar-thumb { background: rgba(0,240,255,0.2); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0,240,255,0.4); }
+::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.45); }
 
-::selection { background: rgba(0,240,255,0.2); color: #fff; }
+body.light-mode ::-webkit-scrollbar-track { background: #F3EFEA; }
+body.light-mode ::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.35); border-radius: 3px; }
+body.light-mode ::-webkit-scrollbar-thumb:hover { background: rgba(2, 132, 199, 0.55); }
+
+/* Selection */
+::selection { background: rgba(0, 240, 255, 0.25); color: #fff; }
+body.light-mode ::selection { background: rgba(2, 132, 199, 0.25); color: #1e293b; }
+
+/* Micro-animations and responsive rules */
+.wv-theme-toggle {
+  transition: transform 0.25s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.wv-theme-toggle:hover {
+  transform: scale(1.08);
+}
+.wv-theme-toggle:active {
+  transform: scale(0.92);
+}
+
+@media (max-width: 640px) {
+  .wv-header-brand-text {
+    font-size: 15px !important;
+    letter-spacing: 0.5px !important;
+  }
+  .wv-header-logo-img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .wv-admin-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.5px !important;
+  }
+  .wv-theme-toggle {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .wv-header-brand-text {
+    font-size: 13.5px !important;
+    letter-spacing: 0.2px !important;
+  }
+  .wv-header-logo-img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .wv-admin-btn {
+    padding: 5px 8px !important;
+    font-size: 10.5px !important;
+  }
+  .wv-theme-toggle {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .wv-header-brand-text {
+    font-size: 12px !important;
+  }
+  .wv-admin-full {
+    display: none !important;
+  }
+  .wv-admin-short {
+    display: inline !important;
+  }
+}

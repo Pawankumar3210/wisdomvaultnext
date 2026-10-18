@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { useTheme } from "../context/ThemeContext";
 import SearchBar from "../components/SearchBar";
 import SubjectCard from "../components/SubjectCard";
 import FuturisticLoader from "../components/FuturisticLoader";
 import TopLoadingBar from "../components/TopLoadingBar";
 import AnimatedCounter from "../components/AnimatedCounter";
 import TypewriterText from "../components/TypewriterText";
-import Footer from "../components/Footer"; // IMPORTED FOOTER
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [subjects, setSubjects] = useState([]);
@@ -15,6 +16,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const filterSubject = searchParams.get("subject");
+  const { isLight } = useTheme();
 
   useEffect(() => {
     fetchData();
@@ -40,36 +42,46 @@ export default function Home() {
     : subjects;
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      position: "relative",
-      zIndex: 1,
-      display: "flex",        // ADDED FOR FOOTER POSITIONING
-      flexDirection: "column" // ADDED FOR FOOTER POSITIONING
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <TopLoadingBar loading={loading} />
 
       {/* WRAPPER FOR MAIN CONTENT TO PUSH FOOTER DOWN */}
-      <div style={{ flex: 1 }}> 
+      <div style={{ flex: 1 }}>
         {/* HERO SECTION */}
-        <div style={{
-          textAlign: "center",
-          padding: "48px 20px 40px",
-          maxWidth: 700,
-          margin: "0 auto",
-        }}>
-          <div style={{
-            display: "inline-block",
-            padding: "6px 16px",
-            background: "rgba(0,240,255,0.08)",
-            border: "1px solid rgba(0,240,255,0.2)",
-            borderRadius: 30,
-            fontSize: 16,
-            color: "#00f0ff",
-            fontFamily: "'Orbitron', sans-serif",
-            letterSpacing: 2,
-            marginBottom: 20,
-          }}>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "48px 20px 40px",
+            maxWidth: 700,
+            margin: "0 auto",
+          }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              padding: "6px 16px",
+              background: isLight ? "rgba(2,132,199,0.08)" : "rgba(0,240,255,0.08)",
+              border: isLight
+                ? "1px solid rgba(2,132,199,0.25)"
+                : "1px solid rgba(0,240,255,0.2)",
+              borderRadius: 30,
+              fontSize: 15,
+              fontWeight: 600,
+              color: isLight ? "#0284c7" : "#00f0ff",
+              fontFamily: "'Orbitron', sans-serif",
+              letterSpacing: 2,
+              marginBottom: 20,
+              transition: "all 0.3s ease",
+            }}
+          >
             CSE 5TH SEMESTER
           </div>
 
@@ -79,53 +91,91 @@ export default function Home() {
               fontFamily: "'Orbitron', sans-serif",
               fontSize: "clamp(18px, 3.2vw, 26px)",
               fontWeight: 500,
-              color: "#00f0ff",
+              color: isLight ? "#0284c7" : "#00f0ff",
               marginBottom: 28,
               letterSpacing: 1,
               lineHeight: 1.8,
               fontStyle: "italic",
               maxWidth: 600,
               margin: "0 auto 36px",
-              textShadow: "0 0 20px rgba(0,240,255,0.6), 0 0 40px rgba(0,240,255,0.3)",
+              textShadow: isLight
+                ? "0 0 15px rgba(2,132,199,0.25)"
+                : "0 0 20px rgba(0,240,255,0.6), 0 0 40px rgba(0,240,255,0.3)",
               textAlign: "center",
+              transition: "color 0.3s ease, text-shadow 0.3s ease",
             }}
           />
-            
+
           <SearchBar />
         </div>
 
         {/* STATS BAR */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 12,
-          padding: "0 20px 40px",
-          flexWrap: "wrap",
-        }}>
-          <AnimatedCounter target={contents.filter(c => c.type === "note").length} color="#00f0ff" label="Notes" />
-          <AnimatedCounter target={contents.filter(c => c.type === "qb").length} color="#a855f7" label="Question Banks" />
-          <AnimatedCounter target={contents.filter(c => c.type === "paper").length} color="#f59e0b" label="Question Papers" />
-          <AnimatedCounter target={subjects.length} color="#10b981" label="Subjects" />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 12,
+            padding: "0 20px 40px",
+            flexWrap: "wrap",
+          }}
+        >
+          <AnimatedCounter
+            target={contents.filter(c => c.type === "note").length}
+            color={isLight ? "#0284c7" : "#00f0ff"}
+            label="Notes"
+          />
+          <AnimatedCounter
+            target={contents.filter(c => c.type === "qb").length}
+            color={isLight ? "#7c3aed" : "#a855f7"}
+            label="Question Banks"
+          />
+          <AnimatedCounter
+            target={contents.filter(c => c.type === "paper").length}
+            color={isLight ? "#d97706" : "#f59e0b"}
+            label="Question Papers"
+          />
+          <AnimatedCounter
+            target={subjects.length}
+            color={isLight ? "#059669" : "#10b981"}
+            label="Subjects"
+          />
         </div>
 
         {/* SUBJECTS SECTION */}
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 16px 60px" }}>
           {filterSubject && (
-            <div style={{
-              display: "flex", alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 20,
-            }}>
-              <div style={{ fontSize: 13, color: "rgba(0,240,255,0.6)" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 20,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 13,
+                  color: isLight ? "#0284c7" : "rgba(0,240,255,0.6)",
+                  fontFamily: "'Orbitron', sans-serif",
+                }}
+              >
                 Filtered by subject
               </div>
-              <a href="/" style={{
-                fontSize: 12, color: "#00f0ff",
-                textDecoration: "none",
-                padding: "5px 12px",
-                border: "1px solid rgba(0,240,255,0.3)",
-                borderRadius: 6,
-              }}>
+              <a
+                href="/"
+                style={{
+                  fontSize: 12,
+                  color: isLight ? "#0284c7" : "#00f0ff",
+                  textDecoration: "none",
+                  padding: "5px 12px",
+                  border: isLight
+                    ? "1px solid rgba(2,132,199,0.35)"
+                    : "1px solid rgba(0,240,255,0.3)",
+                  borderRadius: 6,
+                  background: isLight ? "rgba(2,132,199,0.06)" : "transparent",
+                  transition: "all 0.2s ease",
+                }}
+              >
                 ← Show All
               </a>
             </div>
@@ -134,12 +184,22 @@ export default function Home() {
           {loading ? (
             <FuturisticLoader text="LOADING VAULT" />
           ) : filteredSubjects.length === 0 ? (
-            <div style={{
-              textAlign: "center", padding: "80px 20px",
-              color: "rgba(255,255,255,0.2)",
-            }}>
+            <div
+              style={{
+                textAlign: "center",
+                padding: "80px 20px",
+                color: isLight ? "#64748b" : "rgba(255,255,255,0.2)",
+              }}
+            >
               <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
-              <div style={{ fontSize: 16, fontFamily: "'Orbitron', sans-serif", letterSpacing: 2 }}>
+              <div
+                style={{
+                  fontSize: 16,
+                  fontFamily: "'Orbitron', sans-serif",
+                  letterSpacing: 2,
+                  color: isLight ? "#334155" : "inherit",
+                }}
+              >
                 NO SUBJECTS YET
               </div>
               <div style={{ fontSize: 13, marginTop: 8 }}>
@@ -147,11 +207,13 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-              gap: 20,
-            }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: 20,
+              }}
+            >
               {filteredSubjects.map(subject => (
                 <SubjectCard
                   key={subject.id}
