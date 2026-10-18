@@ -1,25 +1,52 @@
 {
-  "short_name": "Wisdom Vault",
+  "short_name": "WisdomVault",
   "name": "Wisdom Vault",
+  "description": "Your gateway to CSE 5th Semester study notes, question banks, and previous question papers.",
   "icons": [
     {
-      "src": "wisdom-logo.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "wisdom-logo.png",
+      "src": "/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
-      "src": "wisdom-logo.png",
+      "src": "/icon-maskable-192.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#080818",
+  "background_color": "#080818",
+  "categories": ["education", "reference"],
+  "shortcuts": [
+    {
+      "name": "Browse Subjects",
+      "short_name": "Subjects",
+      "description": "Quickly access semester subjects and notes",
+      "url": "/",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
 }

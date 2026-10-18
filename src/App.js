@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import PDFViewer from "./pages/PDFViewer";
+import InstallPwaPrompt from "./components/InstallPwaPrompt";
 
 function ProtectedRoute({ children }) {
   return localStorage.getItem("wv_admin") === "true"
@@ -53,6 +54,7 @@ function MainLayout() {
       }}
     >
       <ParticleBackground />
+      <InstallPwaPrompt />
       <Routes>
         <Route path="/pdf/:id" element={<PDFViewer />} />
 
