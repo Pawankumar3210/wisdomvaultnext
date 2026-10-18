@@ -70,20 +70,16 @@ export default function Header() {
               className="wv-header-brand-text"
               style={{
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: 20,
-                fontWeight: 700,
                 color: isLight ? "#0284c7" : "#00f0ff",
-                letterSpacing: 1.5,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
                 textShadow: isLight
                   ? "0 0 15px rgba(2, 132, 199, 0.25)"
                   : "0 0 15px rgba(0, 240, 255, 0.5)",
                 transition: "color 0.3s ease, text-shadow 0.3s ease",
               }}
             >
-              WISDOM VAULT
+              <span className="wv-brand-word wv-brand-wisdom">WISDOM</span>
+              <span className="wv-brand-space"> </span>
+              <span className="wv-brand-word wv-brand-vault">VAULT</span>
             </div>
           </Link>
         </div>
